@@ -10,18 +10,25 @@ const Navigation = () => {
           </span>
         </div>
         <ul className="flex">
-          <li className="mr-6 text-white">
-            {/* activeClassName={classes.active} */}
-            <NavLink to="/">About</NavLink>
+          <li className="mr-6 text-white hover:text-gray-200">
+            <NavLink exact to="/" activeClassName="underline">
+              About
+            </NavLink>
           </li>
-          <li className="mr-6 text-white">
-            <NavLink to="/workout">Workout</NavLink>
+          <li className="mr-6 text-white hover:text-gray-200">
+            <NavLink to="/workout" activeClassName="underline">
+              Workout
+            </NavLink>
           </li>
-          <li className="mr-6 text-white">
-            <NavLink to="/videos">Videos</NavLink>
+          <li className="mr-6 text-white hover:text-gray-200">
+            <NavLink to="/videos" activeClassName="underline">
+              Videos
+            </NavLink>
           </li>
-          <li className="mr-6 text-white">
-            <NavLink to="/login">Login</NavLink>
+          <li className="mr-6 text-white hover:text-gray-200">
+            <NavLink to="/login" activeClassName="underline">
+              Login
+            </NavLink>
           </li>
         </ul>
       </nav>
