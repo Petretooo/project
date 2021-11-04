@@ -1,7 +1,7 @@
 import axios from "axios";
 
-import store from "../../store";
-import { setAuthUser } from "../actions/index";
+import store from "../store";
+import { setAuthUser } from "./index";
 
 const API_KEY = "AIzaSyDeWfwn0P0AECmyb_k_BrjJWh-eYLkKZ0I";
 

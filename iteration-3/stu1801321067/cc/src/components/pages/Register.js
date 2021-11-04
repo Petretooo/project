@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-import { registerUser } from "../actions/controller";
+import { registerUser } from "../../actions/controller";
 
 const Register = () => {
   const history = useHistory();

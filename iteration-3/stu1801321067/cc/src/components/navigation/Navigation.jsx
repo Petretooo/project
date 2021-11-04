@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { logoutUser } from "../actions/controller";
+import { logoutUser } from "../../actions/controller";
 
 import { NavLink } from "react-router-dom";
 

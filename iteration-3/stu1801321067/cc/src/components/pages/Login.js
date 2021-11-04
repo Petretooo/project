@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-import { loginUser } from "../actions/controller";
+import { loginUser } from "../../actions/controller";
 
 const Login = () => {
   const history = useHistory();

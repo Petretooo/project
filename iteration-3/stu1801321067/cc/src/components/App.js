@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Switch, Route, Redirect } from "react-router-dom";
 
-import { retrieveStoredToken } from "./actions/controller";
-import { setAuthUser } from "./actions";
+import { retrieveStoredToken } from "../actions/controller";
+import { setAuthUser } from "../actions/index";
 
 import About from "./pages/About";
 import Workout from "./pages/Workout";
