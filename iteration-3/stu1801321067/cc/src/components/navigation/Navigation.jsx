@@ -1,6 +1,12 @@
+import { useSelector } from "react-redux";
+
+import { logoutUser } from "../actions/controller";
+
 import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
+  const authUser = useSelector((state) => state.authUser);
+
   return (
     <header className="bg-green-500">
       <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
@@ -15,20 +21,30 @@ const Navigation = () => {
               About
             </NavLink>
           </li>
+          {authUser ? (
+            <>
+              <li className="mr-6 text-white hover:text-gray-200">
+                <NavLink to="/workout" activeClassName="underline">
+                  Workout
+                </NavLink>
+              </li>
+              <li className="mr-6 text-white hover:text-gray-200">
+                <NavLink to="/videos" activeClassName="underline">
+                  Videos
+                </NavLink>
+              </li>
+            </>
+          ) : null}
           <li className="mr-6 text-white hover:text-gray-200">
-            <NavLink to="/workout" activeClassName="underline">
-              Workout
-            </NavLink>
-          </li>
-          <li className="mr-6 text-white hover:text-gray-200">
-            <NavLink to="/videos" activeClassName="underline">
-              Videos
-            </NavLink>
-          </li>
-          <li className="mr-6 text-white hover:text-gray-200">
-            <NavLink to="/login" activeClassName="underline">
-              Login
-            </NavLink>
+            {!authUser ? (
+              <NavLink to="/login" activeClassName="underline">
+                Login
+              </NavLink>
+            ) : (
+              <button type="button" onClick={logoutUser}>
+                Logout
+              </button>
+            )}
           </li>
         </ul>
       </nav>

@@ -1,4 +1,9 @@
-import { Switch, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Switch, Route, Redirect } from "react-router-dom";
+
+import { retrieveStoredToken } from "./actions/controller";
+import { setAuthUser } from "./actions";
 
 import About from "./pages/About";
 import Workout from "./pages/Workout";
@@ -8,7 +13,15 @@ import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 import Layout from "./layout/Layout";
 
-function App() {
+const App = () => {
+  const authUser = useSelector((state) => state.authUser);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const { token } = retrieveStoredToken();
+    dispatch(setAuthUser(token));
+  }, [dispatch]);
+
   return (
     <Layout>
       <Switch>
@@ -16,16 +29,16 @@ function App() {
           <About />
         </Route>
         <Route path="/workout">
-          <Workout />
+          {authUser ? <Workout /> : <Redirect to="/login" />}
         </Route>
         <Route path="/videos">
-          <Videos />
+          {authUser ? <Videos /> : <Redirect to="/login" />}
         </Route>
         <Route path="/login">
-          <Login />
+          {!authUser ? <Login /> : <Redirect to="/workout" />}
         </Route>
         <Route path="/register">
-          <Register />
+          {!authUser ? <Register /> : <Redirect to="/workout" />}
         </Route>
         <Route path="*">
           <NotFound />
@@ -33,6 +46,6 @@ function App() {
       </Switch>
     </Layout>
   );
-}
+};
 
 export default App;
