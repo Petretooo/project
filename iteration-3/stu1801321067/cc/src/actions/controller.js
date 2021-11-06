@@ -2,7 +2,13 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 
 import store from "../store";
-import { setAuthUser, setWorkout, setVideos } from "./index";
+import {
+  setAuthUser,
+  setAuthUserId,
+  setWorkout,
+  setVideos,
+  setVideoUrl,
+} from "./index";
 
 const API_KEY = "AIzaSyDeWfwn0P0AECmyb_k_BrjJWh-eYLkKZ0I";
 
@@ -63,12 +69,13 @@ export const loginUser = async (email, password) => {
       }
     );
     const { data } = response;
-    const { idToken, expirationTime } = data;
+    const { idToken, expirationTime, localId } = data;
 
     localStorage.setItem("token", idToken);
     localStorage.setItem("expirationTime", expirationTime);
 
     store.dispatch(setAuthUser(idToken));
+    store.dispatch(setAuthUserId(localId));
   } catch (error) {
     console.error(error);
   }
@@ -76,8 +83,10 @@ export const loginUser = async (email, password) => {
 
 export const logoutUser = async () => {
   store.dispatch(setAuthUser(null));
-  store.dispatch(setAuthUser(null));
-  store.dispatch(setAuthUser(null));
+  store.dispatch(setAuthUserId(null));
+  store.dispatch(setWorkout(null));
+  store.dispatch(setVideos(null));
+
   localStorage.removeItem("token");
   localStorage.removeItem("expirationTime");
 };
@@ -97,7 +106,7 @@ export const fetchWorkout = async () => {
 };
 
 export const uploadVideo = async (videoUrl) => {
-  const { authUser, workout } = store.getState();
+  const { authUser, authUserId, workout } = store.getState();
 
   try {
     await axios.post(
@@ -105,10 +114,12 @@ export const uploadVideo = async (videoUrl) => {
       {
         workout_date: workout.date,
         videoUrl,
-        userId: authUser,
+        userId: authUserId,
         videoId: uuidv4(),
       }
     );
+
+    store.dispatch(setVideoUrl(null));
 
     await fetchVideos();
   } catch (error) {
@@ -117,10 +128,10 @@ export const uploadVideo = async (videoUrl) => {
 };
 
 export const fetchVideos = async () => {
-  const { authUser } = store.getState();
+  const { authUser, authUserId } = store.getState();
 
   const queryParams =
-    "?auth=" + authUser + '&orderBy="userId"&equalTo="' + authUser + '"';
+    "?auth=" + authUser + '&orderBy="userId"&equalTo="' + authUserId + '"';
 
   try {
     const response = await axios.get(
