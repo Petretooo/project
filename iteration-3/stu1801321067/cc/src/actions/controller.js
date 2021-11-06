@@ -1,7 +1,8 @@
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
 import store from "../store";
-import { setAuthUser, setWorkout } from "./index";
+import { setAuthUser, setWorkout, setVideos } from "./index";
 
 const API_KEY = "AIzaSyDeWfwn0P0AECmyb_k_BrjJWh-eYLkKZ0I";
 
@@ -75,6 +76,8 @@ export const loginUser = async (email, password) => {
 
 export const logoutUser = async () => {
   store.dispatch(setAuthUser(null));
+  store.dispatch(setAuthUser(null));
+  store.dispatch(setAuthUser(null));
   localStorage.removeItem("token");
   localStorage.removeItem("expirationTime");
 };
@@ -88,6 +91,45 @@ export const fetchWorkout = async () => {
     const convertedData = { ...data, exercises: Object.values(data.exercises) };
 
     store.dispatch(setWorkout(convertedData));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const uploadVideo = async (videoUrl) => {
+  const { authUser, workout } = store.getState();
+
+  try {
+    await axios.post(
+      `https://candicecock-7375c-default-rtdb.firebaseio.com/video.json?auth=${authUser}`,
+      {
+        workout_date: workout.date,
+        videoUrl,
+        userId: authUser,
+        videoId: uuidv4(),
+      }
+    );
+
+    await fetchVideos();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const fetchVideos = async () => {
+  const { authUser } = store.getState();
+
+  const queryParams =
+    "?auth=" + authUser + '&orderBy="userId"&equalTo="' + authUser + '"';
+
+  try {
+    const response = await axios.get(
+      `https://candicecock-7375c-default-rtdb.firebaseio.com/video.json${queryParams}`
+    );
+    const { data } = response;
+    const convertedData = Object.values(data);
+
+    store.dispatch(setVideos(convertedData));
   } catch (error) {
     console.error(error);
   }

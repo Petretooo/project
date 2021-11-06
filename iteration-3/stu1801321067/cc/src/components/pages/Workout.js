@@ -43,7 +43,9 @@ const Workout = () => {
         </ul>
       </div>
       <div className="mt-8">
-        <Link to="/videos">Upload video</Link>
+        <Link to="/videos" replace>
+          Upload video
+        </Link>
       </div>
     </div>
   );

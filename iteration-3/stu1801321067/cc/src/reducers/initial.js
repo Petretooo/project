@@ -1,7 +1,9 @@
 const getInitialState = () => {
   return {
     authUser: null,
-    workout: {},
+    workout: null,
+    videoUrl: null,
+    videos: null,
   };
 };
 
