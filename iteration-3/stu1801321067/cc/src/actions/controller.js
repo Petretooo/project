@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import store from "../store";
-import { setAuthUser } from "./index";
+import { setAuthUser, setWorkout } from "./index";
 
 const API_KEY = "AIzaSyDeWfwn0P0AECmyb_k_BrjJWh-eYLkKZ0I";
 
@@ -77,4 +77,18 @@ export const logoutUser = async () => {
   store.dispatch(setAuthUser(null));
   localStorage.removeItem("token");
   localStorage.removeItem("expirationTime");
+};
+
+export const fetchWorkout = async () => {
+  try {
+    const response = await axios.get(
+      `https://candicecock-7375c-default-rtdb.firebaseio.com/workout.json`
+    );
+    const { data } = response;
+    const convertedData = { ...data, exercises: Object.values(data.exercises) };
+
+    store.dispatch(setWorkout(convertedData));
+  } catch (error) {
+    console.error(error);
+  }
 };

@@ -1,6 +1,7 @@
 const getInitialState = () => {
   return {
     authUser: null,
+    workout: {},
   };
 };
 
