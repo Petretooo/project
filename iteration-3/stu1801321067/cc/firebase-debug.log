@@ -1,0 +1,170 @@
+[debug] [2021-11-06T11:38:25.220Z] ----------------------------------------------------------------------
+[debug] [2021-11-06T11:38:25.221Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2021-11-06T11:38:25.221Z] CLI Version:   8.2.0
+[debug] [2021-11-06T11:38:25.222Z] Platform:      win32
+[debug] [2021-11-06T11:38:25.222Z] Node Version:  v12.19.0
+[debug] [2021-11-06T11:38:25.223Z] Time:          Sat Nov 06 2021 13:38:25 GMT+0200 (GMT+02:00)
+[debug] [2021-11-06T11:38:25.223Z] ----------------------------------------------------------------------
+[debug] [2021-11-06T11:38:25.223Z] 
+[debug] [2021-11-06T11:38:25.230Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-11-06T11:38:25.230Z] > authorizing via signed-in user
+[debug] [2021-11-06T11:38:25.230Z] [iam] checking project candicecock-7375c for permissions ["firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2021-11-06T11:38:25.233Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/candicecock-7375c:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
+[debug] [2021-11-06T11:38:26.141Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 06 Nov 2021 11:38:26 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=757","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-06T11:38:26.143Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/candicecock-7375c  
+ 
+[debug] [2021-11-06T11:38:26.455Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 06 Nov 2021 11:38:27 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'candicecock-7375c'...
+[info] 
+[info] i  deploying storage, hosting
+[debug] [2021-11-06T11:38:26.458Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/candicecock-7375c  
+ 
+[debug] [2021-11-06T11:38:27.012Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 06 Nov 2021 11:38:27 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  firebase.storage: checking storage.rules for compilation errors...
+[debug] [2021-11-06T11:38:27.020Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/candicecock-7375c:test  
+ {"source":{"files":[{"name":"storage.rules","content":"service firebase.storage {\n  match /b/{bucket}/o {\n    match /{allPaths=**} {\n      allow read, write;\n    }\n  }\n}\n"}]}}
+[debug] [2021-11-06T11:38:27.839Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 06 Nov 2021 11:38:28 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[warn] !  [W] undefined:undefined - Ruleset uses old version (version [1]). Please update to the latest version (version [2]).
+[info] +  firebase.storage: rules file storage.rules compiled successfully
+[debug] [2021-11-06T11:38:27.850Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/candicecock-7375c-default-rtdb/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2021-11-06T11:38:28.822Z] <<< HTTP RESPONSE 500 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Sat, 06 Nov 2021 11:38:29 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-06T11:38:28.822Z] <<< HTTP RESPONSE BODY {"error":{"code":500,"message":"Internal error encountered.","status":"INTERNAL"}}
+[error] 
+[error] Error: HTTP Error: 500, Internal error encountered.
+[debug] [2021-11-06T11:38:28.949Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 500,
+      "message": "Internal error encountered.",
+      "status": "INTERNAL"
+    }
+  },
+  "response": {
+    "statusCode": 500,
+    "body": {
+      "error": {
+        "code": 500,
+        "message": "Internal error encountered.",
+        "status": "INTERNAL"
+      }
+    },
+    "headers": {
+      "vary": "X-Origin, Referer, Origin,Accept-Encoding",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Sat, 06 Nov 2021 11:38:29 GMT",
+      "server": "ESF",
+      "cache-control": "private",
+      "x-xss-protection": "0",
+      "x-frame-options": "SAMEORIGIN",
+      "x-content-type-options": "nosniff",
+      "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"",
+      "accept-ranges": "none",
+      "transfer-encoding": "chunked"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "firebasehosting.googleapis.com",
+        "port": 443,
+        "hostname": "firebasehosting.googleapis.com",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/v1beta1/sites/candicecock-7375c-default-rtdb/versions",
+        "path": "/v1beta1/sites/candicecock-7375c-default-rtdb/versions",
+        "href": "https://firebasehosting.googleapis.com/v1beta1/sites/candicecock-7375c-default-rtdb/versions"
+      },
+      "method": "POST"
+    }
+  }
+}
+[debug] [2021-11-06T11:39:55.649Z] ----------------------------------------------------------------------
+[debug] [2021-11-06T11:39:55.651Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2021-11-06T11:39:55.651Z] CLI Version:   8.2.0
+[debug] [2021-11-06T11:39:55.651Z] Platform:      win32
+[debug] [2021-11-06T11:39:55.652Z] Node Version:  v12.19.0
+[debug] [2021-11-06T11:39:55.653Z] Time:          Sat Nov 06 2021 13:39:55 GMT+0200 (GMT+02:00)
+[debug] [2021-11-06T11:39:55.653Z] ----------------------------------------------------------------------
+[debug] [2021-11-06T11:39:55.653Z] 
+[debug] [2021-11-06T11:39:55.663Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-11-06T11:39:55.663Z] > authorizing via signed-in user
+[debug] [2021-11-06T11:39:55.664Z] [iam] checking project candicecock-7375c for permissions ["firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2021-11-06T11:39:55.666Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/candicecock-7375c:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
+[debug] [2021-11-06T11:39:56.533Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 06 Nov 2021 11:39:57 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=755","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-06T11:39:56.540Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/candicecock-7375c  
+ 
+[debug] [2021-11-06T11:39:56.843Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 06 Nov 2021 11:39:57 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'candicecock-7375c'...
+[info] 
+[info] i  deploying storage, hosting
+[debug] [2021-11-06T11:39:56.847Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/candicecock-7375c  
+ 
+[debug] [2021-11-06T11:39:57.293Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 06 Nov 2021 11:39:57 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  firebase.storage: checking storage.rules for compilation errors...
+[debug] [2021-11-06T11:39:57.300Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/candicecock-7375c:test  
+ {"source":{"files":[{"name":"storage.rules","content":"service firebase.storage {\n  match /b/{bucket}/o {\n    match /{allPaths=**} {\n      allow read, write;\n    }\n  }\n}\n"}]}}
+[debug] [2021-11-06T11:39:58.064Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 06 Nov 2021 11:39:58 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[warn] !  [W] undefined:undefined - Ruleset uses old version (version [1]). Please update to the latest version (version [2]).
+[info] +  firebase.storage: rules file storage.rules compiled successfully
+[debug] [2021-11-06T11:39:58.067Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/candicecock-7375c-default-rtdb/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2021-11-06T11:39:58.996Z] <<< HTTP RESPONSE 500 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Sat, 06 Nov 2021 11:39:59 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-06T11:39:58.996Z] <<< HTTP RESPONSE BODY {"error":{"code":500,"message":"Internal error encountered.","status":"INTERNAL"}}
+[error] 
+[error] Error: HTTP Error: 500, Internal error encountered.
+[debug] [2021-11-06T11:39:59.139Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 500,
+      "message": "Internal error encountered.",
+      "status": "INTERNAL"
+    }
+  },
+  "response": {
+    "statusCode": 500,
+    "body": {
+      "error": {
+        "code": 500,
+        "message": "Internal error encountered.",
+        "status": "INTERNAL"
+      }
+    },
+    "headers": {
+      "vary": "X-Origin, Referer, Origin,Accept-Encoding",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Sat, 06 Nov 2021 11:39:59 GMT",
+      "server": "ESF",
+      "cache-control": "private",
+      "x-xss-protection": "0",
+      "x-frame-options": "SAMEORIGIN",
+      "x-content-type-options": "nosniff",
+      "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"",
+      "accept-ranges": "none",
+      "transfer-encoding": "chunked"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "firebasehosting.googleapis.com",
+        "port": 443,
+        "hostname": "firebasehosting.googleapis.com",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/v1beta1/sites/candicecock-7375c-default-rtdb/versions",
+        "path": "/v1beta1/sites/candicecock-7375c-default-rtdb/versions",
+        "href": "https://firebasehosting.googleapis.com/v1beta1/sites/candicecock-7375c-default-rtdb/versions"
+      },
+      "method": "POST"
+    }
+  }
+}
