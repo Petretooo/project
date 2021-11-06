@@ -24,18 +24,22 @@ export const calculateRemainingTime = (expirationTime) => {
 export const retrieveStoredToken = () => {
   const storedToken = localStorage.getItem("token");
   const storedExpirationDate = localStorage.getItem("expirationTime");
+  const storedLocalId = localStorage.getItem("localId");
 
   const remainingTime = calculateRemainingTime(storedExpirationDate);
 
   if (remainingTime <= 3600) {
     localStorage.removeItem("token");
     localStorage.removeItem("expirationTime");
+    localStorage.removeItem("localId");
+
     return {};
   }
 
   return {
     token: storedToken,
     duration: remainingTime,
+    localId: storedLocalId,
   };
 };
 
@@ -50,9 +54,10 @@ export const registerUser = async (email, password) => {
       }
     );
     const { data } = response;
-    const { idToken } = data;
+    const { idToken, localId } = data;
 
     store.dispatch(setAuthUser(idToken));
+    store.dispatch(setAuthUserId(localId));
   } catch (error) {
     console.error(error);
   }
@@ -69,10 +74,11 @@ export const loginUser = async (email, password) => {
       }
     );
     const { data } = response;
-    const { idToken, expirationTime, localId } = data;
+    const { idToken, expiresIn, localId } = data;
 
     localStorage.setItem("token", idToken);
-    localStorage.setItem("expirationTime", expirationTime);
+    localStorage.setItem("expirationTime", expiresIn);
+    localStorage.setItem("localId", localId);
 
     store.dispatch(setAuthUser(idToken));
     store.dispatch(setAuthUserId(localId));
@@ -89,6 +95,7 @@ export const logoutUser = async () => {
 
   localStorage.removeItem("token");
   localStorage.removeItem("expirationTime");
+  localStorage.removeItem("localId");
 };
 
 export const fetchWorkout = async () => {

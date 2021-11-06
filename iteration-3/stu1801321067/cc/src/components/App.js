@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import { retrieveStoredToken } from "../actions/controller";
-import { setAuthUser } from "../actions/index";
+import { setAuthUser, setAuthUserId } from "../actions/index";
 
 import About from "./pages/About";
 import Workout from "./pages/Workout";
@@ -18,8 +18,10 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const { token } = retrieveStoredToken();
+    const { token, localId } = retrieveStoredToken();
+
     dispatch(setAuthUser(token));
+    dispatch(setAuthUserId(localId));
   }, [dispatch]);
 
   return (
