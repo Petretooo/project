@@ -6,8 +6,6 @@ import { retrieveStoredToken } from "../actions/controller";
 import { setAuthUser, setAuthUserId } from "../actions/index";
 
 import About from "./pages/About";
-import Workout from "./pages/Workout";
-import Videos from "./pages/Videos";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
@@ -32,17 +30,11 @@ const App = () => {
         <Route path="/" exact>
           <About />
         </Route>
-        <Route path="/workout">
-          {authUser ? <Workout /> : <Redirect to="/login" />}
-        </Route>
         <Route path="/board">
           {authUser ? <Board /> : <Redirect to="/login" />}
         </Route>
         <Route path="/chat">
           {authUser ? <Chat /> : <Redirect to="/login" />}
-        </Route>
-        <Route path="/videos">
-          {authUser ? <Videos /> : <Redirect to="/login" />}
         </Route>
         <Route path="/login">
           {!authUser ? <Login /> : <Redirect to="/workout" />}

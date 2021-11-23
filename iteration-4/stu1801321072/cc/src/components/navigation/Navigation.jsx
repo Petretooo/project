@@ -33,16 +33,6 @@ const Navigation = () => {
                   Chat
                 </NavLink>
               </li>
-              <li className="mr-6 text-white hover:text-gray-200">
-                <NavLink to="/workout" activeClassName="underline">
-                  Workout
-                </NavLink>
-              </li>
-              <li className="mr-6 text-white hover:text-gray-200">
-                <NavLink to="/videos" activeClassName="underline">
-                  Videos
-                </NavLink>
-              </li>
             </>
           ) : null}
           <li className="mr-6 text-white hover:text-gray-200">
